@@ -13,6 +13,7 @@ dependencies:
   widgetbook_annotation: ^3.9.0
   formfun_flutter_test:
     path: ../
+  lottie: ^3.3.2
 
 dev_dependencies:
   flutter_test:
@@ -26,3 +27,6 @@ flutter:
   
   assets:
     - assets/
+    - assets/font/
+    - assets/images/
+    - assets/lottie/
