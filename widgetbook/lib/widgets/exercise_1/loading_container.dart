@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:widgetbook/widgetbook.dart';
 
-class BorderLoadingContainer extends StatefulWidget {
+class BorderLoadingContainer extends StatelessWidget {
   final double strokeWidth;
   final double borderRadius;
   final Color borderColor;
+  final Animation animation;
+  final double sliderValue;
+  final bool useSlider;
   final Widget child;
 
   const BorderLoadingContainer({
@@ -12,55 +14,24 @@ class BorderLoadingContainer extends StatefulWidget {
     required this.strokeWidth,
     required this.borderRadius,
     required this.borderColor,
+    required this.animation,
+    this.useSlider = false,
+    required this.sliderValue,
     required this.child,
   });
 
   @override
-  State<BorderLoadingContainer> createState() => _BorderLoadingContainerState();
-}
-
-class _BorderLoadingContainerState extends State<BorderLoadingContainer>
-    with SingleTickerProviderStateMixin {
-  late final AnimationController _controller;
-  late final Animation<double> _animation;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _controller = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 5),
-    )..repeat();
-
-    _animation = CurvedAnimation(parent: _controller, curve: Curves.linear);
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final sliderValue = context.knobs.double.slider(
-      label: 'progress',
-      max: 100,
-    );
-
-    final useSlider = sliderValue > 1;
-
     return AnimatedBuilder(
-      animation: _animation,
-      child: widget.child,
+      animation: animation,
+      child: child,
       builder: (context, child) => CustomPaint(
         painter: _BorderProgressPainter(
           useSlider: useSlider,
-          progress: useSlider ? sliderValue : _animation.value,
-          borderRadius: widget.borderRadius,
-          strokeWidth: widget.strokeWidth,
-          color: widget.borderColor,
+          progress: useSlider ? sliderValue : animation.value,
+          borderRadius: borderRadius,
+          strokeWidth: strokeWidth,
+          color: borderColor,
         ),
         child: child,
       ),

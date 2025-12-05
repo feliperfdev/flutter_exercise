@@ -1,10 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../core/app_assets.dart';
-
 class CardContent extends StatelessWidget {
-  const CardContent({super.key});
+  final String title;
+  final String? subtitle;
+  final String lottieAsset;
+  final double lottieAssetSize;
+
+  const CardContent({
+    super.key,
+    required this.title,
+    required this.subtitle,
+    required this.lottieAsset,
+    this.lottieAssetSize = 80,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,12 +26,13 @@ class CardContent extends StatelessWidget {
         spacing: 16,
         children: [
           Lottie.asset(
-            AppAssets.lottieSearchingAnimation,
-            height: 80,
-            width: 80,
+            lottieAsset,
+            height: lottieAssetSize,
+            width: lottieAssetSize,
           ),
-          Text('Loading File', style: theme.textTheme.bodyMedium),
-          Text('1m 30s', style: theme.textTheme.bodySmall),
+          Text(title, style: theme.textTheme.bodyMedium),
+          if (subtitle != null)
+            Text(subtitle!, style: theme.textTheme.bodySmall),
         ],
       ),
     );
