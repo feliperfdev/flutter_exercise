@@ -7,9 +7,30 @@ final class AppTheme {
   static const cardBackgroundColor = Color(0xffF1F1EF);
   static const cardShadowGlowColor = Color(0xff7E52F4);
 
-  static ThemeData get light =>
-      ThemeData.light().copyWith(scaffoldBackgroundColor: backgroundColor);
+  static const _fontFamily = 'AktivGrotesk';
 
-  static ThemeData get dark =>
-      ThemeData.dark().copyWith(scaffoldBackgroundColor: backgroundColor);
+  static const _textThemeData = TextTheme(
+    bodyMedium: TextStyle(
+      fontFamily: _fontFamily,
+      fontWeight: FontWeight.w600,
+      fontSize: 14,
+      color: darkColor,
+    ),
+    bodySmall: TextStyle(
+      fontFamily: _fontFamily,
+      fontWeight: FontWeight.w400,
+      fontSize: 12,
+      color: tagLine,
+    ),
+  );
+
+  static ThemeData get light => ThemeData.light().copyWith(
+    scaffoldBackgroundColor: backgroundColor,
+    textTheme: _textThemeData,
+  );
+
+  static ThemeData get dark => ThemeData.dark().copyWith(
+    scaffoldBackgroundColor: backgroundColor,
+    textTheme: _textThemeData,
+  );
 }

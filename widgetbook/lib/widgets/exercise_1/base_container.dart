@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../core/app_theme.dart';
+import '../../core/widget_constants.dart';
 
 class BaseContainer extends StatelessWidget {
   final Widget child;
@@ -20,11 +21,10 @@ class BaseContainer extends StatelessWidget {
 
     return Container(
       width: size.width,
-      padding: const EdgeInsets.all(24),
       margin: const EdgeInsets.symmetric(horizontal: 16),
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: BorderRadius.circular(24),
+        borderRadius: BorderRadius.circular(WidgetConstants.cardBorderRadius),
         boxShadow: [
           BoxShadow(
             color: shadowGlowColor.withValues(alpha: .3),
