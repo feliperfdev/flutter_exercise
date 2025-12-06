@@ -1,3 +1,3 @@
 final class WidgetConstants {
-  static const double cardBorderRadius = 24;
+  static const double cardBorderRadius = 32;
 }

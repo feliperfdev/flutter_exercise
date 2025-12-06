@@ -10,6 +10,11 @@ final class AppTheme {
   static const _fontFamily = 'AktivGrotesk';
 
   static const _textThemeData = TextTheme(
+    titleMedium: TextStyle(
+      fontFamily: _fontFamily,
+      fontSize: 20,
+      color: darkColor,
+    ),
     bodyMedium: TextStyle(
       fontFamily: _fontFamily,
       fontWeight: FontWeight.w600,
