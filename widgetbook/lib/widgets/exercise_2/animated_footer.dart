@@ -22,7 +22,7 @@ class AnimatedFooter extends StatelessWidget {
 
     return AnimatedBuilder(
       animation: animationController,
-      builder: (context, _) {
+      builder: (_, _) {
         final value = tween.evaluate(animationController);
 
         return Positioned(

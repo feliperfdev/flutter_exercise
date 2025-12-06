@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 final class AppTheme {
   static const backgroundColor = Color(0xffE8E8E3);
+  static const lightColor = Color(0xffFAFAFA);
   static const darkColor = Color(0xff0E0F10);
   static const tagLine = Color(0xff808080);
   static const cardBackgroundColor = Color(0xffF1F1EF);
@@ -26,6 +27,12 @@ final class AppTheme {
       fontWeight: FontWeight.w400,
       fontSize: 12,
       color: tagLine,
+    ),
+    labelMedium: TextStyle(
+      fontFamily: _fontFamily,
+      fontWeight: FontWeight.w500,
+      fontSize: 16,
+      color: lightColor,
     ),
   );
 

@@ -12,6 +12,8 @@ class LandingPageHeaderContainer extends StatelessWidget {
   final String htmlAsset;
   final double websiteImageAspectRatio;
   final String buttonLabel;
+  final double borderRadius;
+  final Color buttonBackgroundColor;
 
   const LandingPageHeaderContainer({
     super.key,
@@ -22,6 +24,8 @@ class LandingPageHeaderContainer extends StatelessWidget {
     required this.htmlAsset,
     this.websiteImageAspectRatio = 16 / 9,
     this.buttonLabel = 'View',
+    this.borderRadius = WidgetConstants.cardBorderRadius,
+    this.buttonBackgroundColor = Colors.black,
   });
 
   @override
@@ -33,17 +37,19 @@ class LandingPageHeaderContainer extends StatelessWidget {
       width: size.width,
       decoration: BoxDecoration(
         color: backgroundColor,
-        borderRadius: BorderRadius.circular(WidgetConstants.cardBorderRadius),
+        borderRadius: BorderRadius.circular(borderRadius),
       ),
       child: Column(
-        spacing: 24,
         children: [
           Padding(
-            padding: const EdgeInsets.only(top: 8, left: 8, right: 8),
+            padding: const EdgeInsets.only(
+              top: 8,
+              left: 8,
+              right: 8,
+              bottom: 24,
+            ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(
-                WidgetConstants.cardBorderRadius,
-              ),
+              borderRadius: BorderRadius.circular(borderRadius),
               child: AspectRatio(
                 aspectRatio: websiteImageAspectRatio,
                 child: Image.asset(websiteAsset, fit: BoxFit.cover),
@@ -74,13 +80,12 @@ class LandingPageHeaderContainer extends StatelessWidget {
                     padding: WidgetStatePropertyAll(
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
                     ),
-                    backgroundColor: WidgetStatePropertyAll(Colors.black),
+                    backgroundColor: WidgetStatePropertyAll(
+                      buttonBackgroundColor,
+                    ),
                   ),
                   onPressed: () {},
-                  child: Text(
-                    buttonLabel,
-                    style: TextStyle(color: Colors.white),
-                  ),
+                  child: Text(buttonLabel, style: textTheme.labelMedium),
                 ),
               ],
             ),

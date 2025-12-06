@@ -19,23 +19,21 @@ class Exercise2 extends StatefulWidget {
 }
 
 class _Exercise2State extends State<Exercise2> with TickerProviderStateMixin {
-  final scroll = ScrollController();
-
-  bool _isFooterVisible = false;
-
   late final AnimationController animationController;
-
+  final scroll = ScrollController();
   final tween = Tween<double>(begin: -90, end: 20);
+
+  bool isFooterVisible = false;
 
   void scrollListener() {
     if (scroll.position.pixels >= scroll.position.minScrollExtent + 100) {
-      if (!_isFooterVisible) {
+      if (!isFooterVisible) {
         animationController.forward();
-        _isFooterVisible = true;
+        isFooterVisible = true;
       }
-    } else if (_isFooterVisible) {
+    } else if (isFooterVisible) {
       animationController.reverse();
-      _isFooterVisible = false;
+      isFooterVisible = false;
     }
   }
 
