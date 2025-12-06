@@ -68,7 +68,7 @@ class _Exercise2State extends State<Exercise2> with TickerProviderStateMixin {
         children: [
           SingleChildScrollView(
             controller: scroll,
-            padding: const EdgeInsets.symmetric(horizontal: 16),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               spacing: 16,
